@@ -10,6 +10,7 @@ on:
     branches:
       - main
   workflow_dispatch:
+
 permissions:
   contents: read
   packages: write
@@ -32,14 +33,13 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-      
+
       - name: Extract metadata for Docker
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/idt-25-27/publish-docker-images-samuelefranco-16/stackoverflown |
-            ghcr.io/idt-25-27/publish-docker-images-samuelefranco-16/stackoverflown:main
-            ghcr.io/idt-25-27/publish-docker-images-samuelefranco-16/stackoverflown:${{ github.sha }}
+          images: ghcr.io/idt-25-27/publish-docker-images-samuelefranco-16/stackoverflown
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
