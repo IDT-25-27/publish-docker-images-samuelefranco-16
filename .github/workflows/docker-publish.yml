@@ -40,3 +40,10 @@ jobs:
           images: ghcr.io/idt-25-27/publish-docker-images-samuelefranco-16/stackoverflown |
             ghcr.io/idt-25-27/publish-docker-images-samuelefranco-16/stackoverflown:main
             ghcr.io/idt-25-27/publish-docker-images-samuelefranco-16/stackoverflown:${{ github.sha }}
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          platforms: linux/amd64,linux/arm64
+          tags: ${{ steps.meta.outputs.tags }}
